@@ -1,0 +1,2 @@
+Python is a programming language used for data science.
+Python supports functional programming and machine learning.

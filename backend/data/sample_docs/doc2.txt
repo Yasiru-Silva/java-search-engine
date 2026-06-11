@@ -1,0 +1,2 @@
+Data structures in Java include HashMap LinkedList and Trees.
+Algorithms like sorting and searching are fundamental in Java.
