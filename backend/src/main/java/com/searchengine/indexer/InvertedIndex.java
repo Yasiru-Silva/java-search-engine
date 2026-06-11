@@ -1,15 +1,12 @@
 package com.searchengine.indexer;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class InvertedIndex {
 
-    // The main index - maps each word to a set of files containing it
-    // Key = word, Value = set of file names
-    private Map<String, Set<String>> index;
+    // Maps each word to a map of (fileName → word count in that file)
+    private Map<String, Map<String, Integer>> index;
 
     // Constructor - creates an empty index
     public InvertedIndex() {
@@ -17,25 +14,32 @@ public class InvertedIndex {
     }
 
     // Adds a word and the file it was found in to the index
-    public void addWord(String word, String fileName){
+    public void addWord(String word, String fileName) {
 
-        // If this word doesn't exist in index yet, create a new set for it
+        // If word doesn't exist in index yet, create a new map for it
         if (!index.containsKey(word)) {
-            index.put(word, new HashSet<>());
+            index.put(word, new HashMap<>());
         }
 
-        // Add the file name to this word's set
-        index.get(word).add(fileName);
+        // Get the file map for this word
+        Map<String, Integer> fileMap = index.get(word);
+
+        // If file doesn't exist in map yet, start count at 0
+        if (!fileMap.containsKey(fileName)) {
+            fileMap.put(fileName, 0);
+        }
+
+        // Increment the word count for this file
+        fileMap.put(fileName, fileMap.get(fileName) + 1);
     }
 
-    // Returns all files that contain the given word
-    public Set<String> search(String word){
+    // Returns map of (fileName → word count) for the given word
+    public Map<String, Integer> search(String word) {
 
-        // If word exists return its files, otherwise return empty set
-        if(index.containsKey(word)){
+        if (index.containsKey(word)) {
             return index.get(word);
         }
 
-        return new HashSet<>();
+        return new HashMap<>();
     }
 }
