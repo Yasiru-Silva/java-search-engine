@@ -17,6 +17,15 @@ public class Ranker {
             this.score = score;
         }
 
+        // Getters - needed for Spring Boot to convert to JSON
+        public String getFileName() {
+            return fileName;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
         public String toString() {
             return fileName + " (score: " + score + ")";
         }
