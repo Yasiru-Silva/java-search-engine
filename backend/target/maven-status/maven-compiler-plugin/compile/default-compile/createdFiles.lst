@@ -1,8 +1,0 @@
-com\searchengine\ranking\Ranker.class
-com\searchengine\trie\TrieNode.class
-com\searchengine\trie\Trie.class
-com\searchengine\ranking\Ranker$Result.class
-com\searchengine\controller\SearchController.class
-com\searchengine\fileparser\FileParser.class
-com\searchengine\Main.class
-com\searchengine\indexer\InvertedIndex.class
